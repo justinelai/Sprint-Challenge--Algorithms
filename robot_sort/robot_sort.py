@@ -93,11 +93,55 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
+
         """
-        Sort the robot's list.
+        A rudimentary selection sort.
+
+        Robot's light is off. Light will represent no swaps done.
+
+        While robot can move right is true 
+
+        Robot holding None. Swap to pick up first card.
+
+
+        Move right and compare each time. 
+            Swap when compare returns -1, so you're holding smallest value. 
+            After each swap, turn light on.
+
+        When the robot can't move right - if light is on continue. else break ()
+
+        Move left (and compare)
+            When Compare returns None, you're at the blank space. 
+            Swap to place lowest card at index zero.
+            Move right by one. Begin process again
+
+
+
+
+
         """
-        # Fill this out
-        pass
+            
+        self.set_light_off()
+
+            while self.can_move_right():
+                if self.compare_item() == 1:
+                    self.swap_item()  
+                    self.set_light_on() 
+                self.move_right()  
+
+
+            if self.light_is_on() ==  True:
+                self.move_left()
+                continue
+            else:
+                break
+                 
+            while self.can_move_left():
+                self.move_left()
+                if self.compare_item() == None:
+                    self.swap_item()
+            
+        
 
 
 if __name__ == "__main__":
