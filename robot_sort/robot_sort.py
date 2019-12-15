@@ -95,14 +95,12 @@ class SortingRobot:
     def sort(self):
 
         """
+        Initial pseudocode: 
+
         A rudimentary selection sort.
-
         Robot's light is off. Light will represent no swaps done.
-
         While robot can move right is true 
-
         Robot holding None. Swap to pick up first card.
-
 
         Move right and compare each time. 
             Swap when compare returns -1, so you're holding smallest value. 
@@ -114,36 +112,29 @@ class SortingRobot:
             When Compare returns None, you're at the blank space. 
             Swap to place lowest card at index zero.
             Move right by one. Begin process again
-
-
-
-
-
         """
-            
-        self.set_light_off()
+           
+        self.set_light_on()
+
+        while self.light_is_on():
+            self.set_light_off()
+            self.swap_item() # Initialize first card. 
 
             while self.can_move_right():
-                if self.compare_item() == 1:
-                    self.swap_item()  
-                    self.set_light_on() 
-                self.move_right()  
+                self.move_right()
+                self.swap_item()
+                if self.compare_item() == -1: # If the held item's value is less, swap.
+                    self.swap_item() # Swap cards
+                    self.set_light_on()
+                
+            self.swap_item()
 
-
-            if self.light_is_on() ==  True:
-                self.move_left()
-                continue
-            else:
-                break
-                 
             while self.can_move_left():
                 self.move_left()
-                if self.compare_item() == None:
+                if self.compare_item() == 1:
                     self.swap_item()
+                    self.set_light_on()
             
-        
-
-
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
