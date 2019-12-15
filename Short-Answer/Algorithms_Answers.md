@@ -6,9 +6,9 @@ a)  a = 0
     while (a < n * n * n):
       a = a + n * n
 
-    O(n) - causes n^3 executions, then simplifies to rule of multiplication 
+    O(n) - simplifies to rule of multiplication 
 
-b)  sum = 0
+** b)  sum = 0
     for i in range(n):
       j = 1
       while j < n:
@@ -23,11 +23,9 @@ c)  def bunnyEars(bunnies):
         return 0            O(1)                      
 
       return 2 + bunnyEars(bunnies-1)
-    
-    bunnies - positive constant with recursion
-    the (n-1) recursion makes it loops n times.
+  
       
-    O(n)
+    Total: O(n)
 
 ## Exercise II
 
